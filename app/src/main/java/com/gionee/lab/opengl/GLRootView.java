@@ -39,7 +39,7 @@ public class GLRootView extends GLSurfaceView
     private static final String TAG = "GLRootView";
     private static final boolean DEBUG = BuildConfig.DEBUG;
 
-    private static final boolean DEBUG_FPS = false;
+    private static final boolean DEBUG_FPS = true;
     private static final boolean DEBUG_INVALIDATE = false;
     private static final boolean DEBUG_DRAWING_STAT = false;
     private static final boolean DEBUG_PROFILE = false;
@@ -90,7 +90,7 @@ public class GLRootView extends GLSurfaceView
         setEGLContextClientVersion(2);
         setEGLConfigChooser(8, 8, 8, 8, 24, 0);
         setRenderer(this);
-        getHolder().setFormat(PixelFormat.RGB_888);
+        getHolder().setFormat(PixelFormat.RGBA_8888);
         mClearBufferBackground = Utils.intColorToFloatARGBArray(0);
         // Uncomment this to enable gl error check.
         // setDebugFlags(DEBUG_CHECK_GL_ERROR);
@@ -166,8 +166,6 @@ public class GLRootView extends GLSurfaceView
 
         int w = getWidth();
         int h = getHeight();
-        int displayRotation = 0;
-        int compensation = 0;
         if (mContentView != null && w != 0 && h != 0) {
             mContentView.layout(0, 0, w, h);
         }
